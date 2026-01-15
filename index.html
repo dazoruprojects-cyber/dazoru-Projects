@@ -45,35 +45,40 @@
     <section class="services section">
         <div class="container">
             <h2 class="section-title">NUESTROS SERVICIOS</h2>
-            <p class="section-subtitle">Haz clic en las imágenes para verlas en grande</p>
+            <p class="section-subtitle">Haz clic en las imágenes para ver nuestros trabajos</p>
             
             <div class="grid-3">
-                <div class="card">
+                <div class="card" onclick="openGallery('espejos')">
                     <img src="espejos.png" alt="Espejos Decorativos Grid" class="card-img">
                     <h3>Espejos Decorativos</h3>
                     <p>Diseños exclusivos con marco de madera y espejo de 3 mm. Amplía e ilumina tus espacios.</p>
                 </div>
-                <div class="card">
+
+                <div class="card" onclick="openGallery('wallpanel')">
                     <img src="wallpanel.jpg" alt="Wall Panel TV" class="card-img">
                     <h3>Wall Panels</h3>
                     <p>Revestimientos modernos para paredes que dan textura y calidez.</p>
                 </div>
-                <div class="card">
+
+                <div class="card" onclick="openGallery('melamina')">
                     <img src="melamina.jpg" alt="Divisor de ambiente melamina" class="card-img">
                     <h3>Proyectos en Melamina</h3>
                     <p>Muebles de cocina, closets y centros de entretenimiento a medida.</p>
                 </div> 
-                <div class="card">
+
+                <div class="card" onclick="openGallery('diseno')">
                     <img src="diseno.png" alt="Diseño de Interiores Sala" class="card-img">
                     <h3>Diseño de Interiores</h3>
                     <p>Asesoría personalizada para integrar espejos y paneles en tu decoración.</p>
                 </div>
-                <div class="card">
+
+                <div class="card" onclick="openGallery('bano')">
                     <img src="bano.png" alt="Mueble de Baño Moderno" class="card-img">
                     <h3>Muebles de Baño</h3>
                     <p>Espejos LED y muebles resistentes a la humedad con acabados premium.</p>
                 </div>  
-                <div class="card">
+
+                <div class="card" onclick="openGallery('instalacion')">
                     <img src="instalacion.png" alt="Herramientas e instalación" class="card-img">
                     <h3>Instalación A1</h3>
                     <p>Técnicos especialistas y accesorios de calidad para una instalación segura.</p>
@@ -139,26 +144,78 @@
     </a>
 
     <div id="lightbox">
-        <img id="lightbox-img" src="" alt="Imagen Grande">
+        <button class="close-btn" onclick="closeGallery()">&times;</button>
+        <button class="lightbox-btn prev" onclick="changeImage(-1)">&#10094;</button>
+        <img id="lightbox-img" src="" alt="Galería">
+        <button class="lightbox-btn next" onclick="changeImage(1)">&#10095;</button>
     </div>
 
     <script>
-        // Seleccionamos los elementos
+        // CONFIGURACIÓN: Aquí están las listas de 10 fotos por categoría
+        const galleries = {
+            'espejos': [
+                'espejos.png', 'espejos2.jpg', 'espejos3.jpg', 'espejos4.jpg', 'espejos5.jpg',
+                'espejos6.jpg', 'espejos7.jpg', 'espejos8.jpg', 'espejos9.jpg', 'espejos10.jpg'
+            ],
+            'wallpanel': [
+                'wallpanel.jpg', 'wallpanel2.jpg', 'wallpanel3.jpg', 'wallpanel4.jpg', 'wallpanel5.jpg',
+                'wallpanel6.jpg', 'wallpanel7.jpg', 'wallpanel8.jpg', 'wallpanel9.jpg', 'wallpanel10.jpg'
+            ],
+            'melamina': [
+                'melamina.jpg', 'melamina2.jpg', 'melamina3.jpg', 'melamina4.jpg', 'melamina5.jpg',
+                'melamina6.jpg', 'melamina7.jpg', 'melamina8.jpg', 'melamina9.jpg', 'melamina10.jpg'
+            ],
+            'instalacion': [
+                'instalacion.png', 'instalacion2.jpg', 'instalacion3.jpg', 'instalacion4.jpg', 'instalacion5.jpg',
+                'instalacion6.jpg', 'instalacion7.jpg', 'instalacion8.jpg', 'instalacion9.jpg', 'instalacion10.jpg'
+            ],
+            'diseno': [
+                'diseno.png', 'diseno2.jpg', 'diseno3.jpg', 'diseno4.jpg', 'diseno5.jpg',
+                'diseno6.jpg', 'diseno7.jpg', 'diseno8.jpg', 'diseno9.jpg', 'diseno10.jpg'
+            ],
+            'bano': [
+                'bano.png', 'bano2.jpg', 'bano3.jpg', 'bano4.jpg', 'bano5.jpg',
+                'bano6.jpg', 'bano7.jpg', 'bano8.jpg', 'bano9.jpg', 'bano10.jpg'
+            ]
+        };
+
+        let currentCategory = '';
+        let currentIndex = 0;
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-        const images = document.querySelectorAll('.card-img');
 
-        // Añadimos el evento clic a cada imagen
-        images.forEach(img => {
-            img.addEventListener('click', () => {
-                lightbox.style.display = 'flex'; // Mostrar fondo negro
-                lightboxImg.src = img.src; // Poner la foto que se clickeó
-            });
-        });
+        function openGallery(category) {
+            if (galleries[category]) {
+                currentCategory = category;
+                currentIndex = 0;
+                lightboxImg.src = galleries[currentCategory][currentIndex];
+                lightbox.style.display = 'flex';
+            }
+        }
 
-        // Ocultar al hacer clic en el fondo negro
-        lightbox.addEventListener('click', () => {
+        function closeGallery() {
             lightbox.style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            const photos = galleries[currentCategory];
+
+            // Carrusel infinito
+            if (currentIndex >= photos.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = photos.length - 1;
+            }
+
+            // Cargar nueva imagen
+            const nextImg = photos[currentIndex];
+            lightboxImg.src = nextImg;
+        }
+
+        // Cerrar si tocan fuera
+        lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox) closeGallery();
         });
     </script>
 
