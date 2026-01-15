@@ -1,4 +1,6 @@
-/* --- CONFIGURACIÓN DE COLORES --- */
+/* --- DAZORU PROJECTS: VERSIÓN LUXURY (SIN TESTIMONIOS) --- */
+
+/* 1. CONFIGURACIÓN DE COLORES */
 :root {
     --color-primary: #0E3D4D; /* Azul Petróleo */
     --color-accent: #C59D5F;  /* Dorado */
@@ -6,7 +8,11 @@
     --color-bg-light: #f4f4f4;
 }
 
-/* Reset básico */
+/* 2. CONFIGURACIÓN BÁSICA */
+html {
+    scroll-behavior: smooth; /* Deslizamiento suave */
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Montserrat', sans-serif; color: var(--color-text); line-height: 1.6; background-color: #f9f9f9; }
 a { text-decoration: none; color: inherit; }
@@ -15,13 +21,13 @@ ul { list-style: none; }
 /* Contenedor */
 .container { width: 90%; max-width: 1200px; margin: auto; padding: 0 15px; }
 
-/* Barra Superior */
+/* 3. BARRA SUPERIOR */
 .top-bar { background-color: #08242e; color: white; padding: 8px 0; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .top-bar .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
 .top-bar span { margin-right: 20px; }
 .top-bar .highlight { font-weight: bold; color: var(--color-accent); }
 
-/* Navegación */
+/* 4. NAVEGACIÓN */
 .navbar { background: var(--color-primary); box-shadow: 0 4px 10px rgba(0,0,0,0.2); padding: 10px 0; position: sticky; top: 0; z-index: 1000; }
 .flex-nav { display: flex; justify-content: space-between; align-items: center; }
 
@@ -43,21 +49,52 @@ ul { list-style: none; }
 }
 .btn-nav:hover { background: var(--color-accent); color: white !important; }
 
-/* Hero Section */
+/* 5. PORTADA (HERO) - CON EFECTO VIDRIO Y ANIMACIÓN */
 .hero {
-    background: linear-gradient(rgba(14, 61, 77, 0.8), rgba(14, 61, 77, 0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80'); 
+    background: linear-gradient(rgba(14, 61, 77, 0.7), rgba(14, 61, 77, 0.5)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80'); 
     background-size: cover;
     background-position: center;
-    height: 75vh;
+    height: 85vh; /* Un poco más alto para elegancia */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
 }
-.hero h1 { font-size: 3.5rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 3px; color: var(--color-accent); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-.slogan { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #fff; margin-bottom: 20px; font-weight: 400; }
-.hero-desc { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+/* --- AQUÍ ESTÁ EL EFECTO DE CRISTAL (GLASSMORPHISM) --- */
+.hero-content {
+    background: rgba(0, 0, 0, 0.4); /* Fondo oscuro transparente */
+    backdrop-filter: blur(10px);    /* DESENFOQUE MÁGICO */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borde fino */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    max-width: 800px;
+    margin: 0 15px;
+    
+    /* Animación de entrada */
+    animation: subirAparecer 1.5s ease-out;
+}
+
+/* Título con degradado dorado */
+.hero h1 { 
+    font-size: 3.5rem; 
+    margin-bottom: 10px; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    
+    /* Efecto Dorado en Texto */
+    background: linear-gradient(45deg, #C59D5F, #FFF, #C59D5F);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+}
+
+.slogan { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #fff; margin-bottom: 25px; font-weight: 400; }
+.hero-desc { font-size: 1.2rem; margin-bottom: 30px; }
 
 .btn-primary { 
     background: var(--color-accent); 
@@ -73,40 +110,52 @@ ul { list-style: none; }
 }
 .btn-primary:hover { background: #b08d55; transform: translateY(-3px); }
 
-/* Secciones Generales */
-.section { padding: 80px 0; }
+/* 6. SECCIONES GENERALES */
+.section { padding: 100px 0; } /* Más espacio para que se vea limpio */
 .section-title { text-align: center; margin-bottom: 10px; font-size: 2.2rem; color: var(--color-primary); text-transform: uppercase; font-weight: 800; }
-.section-subtitle { text-align: center; margin-bottom: 50px; color: #666; font-size: 1.1rem; font-style: italic; }
+.section-subtitle { text-align: center; margin-bottom: 60px; color: #666; font-size: 1.1rem; font-style: italic; }
 
-/* Servicios Cards */
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-.card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s; border: 1px solid #eee; }
-.card:hover { transform: translateY(-10px); border-bottom: 5px solid var(--color-accent); }
+/* 7. TARJETAS DE SERVICIOS - CON RESPLANDOR DORADO */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
 
-/* IMÁGENES CLICABLES */
-.card-img { 
-    width: 100%; 
-    height: 250px; 
-    object-fit: cover; 
-    border-radius: 8px; 
-    margin-bottom: 15px;
-    cursor: pointer; /* Manito al pasar el mouse */
-    transition: filter 0.3s;
+.card { 
+    background: white; 
+    padding: 25px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    text-align: center; 
+    transition: all 0.4s ease; /* Transición suave */
+    border: 1px solid #eee; 
 }
-.card-img:hover { filter: brightness(0.8); } /* Efecto visual al pasar el mouse */
+
+/* --- EFECTO DE LUJO AL PASAR EL MOUSE --- */
+.card:hover { 
+    transform: translateY(-15px) scale(1.02); /* Se levanta */
+    box-shadow: 0 20px 50px rgba(197, 157, 95, 0.4); /* RESPLANDOR DORADO */
+    border: 1px solid #C59D5F; 
+    border-bottom: 1px solid #C59D5F; /* Asegura el borde completo */
+}
+
+/* Imágenes clicables */
+.card-img { 
+    width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 20px;
+    cursor: pointer; transition: filter 0.3s;
+}
+.card-img:hover { filter: brightness(0.9); }
 
 .card h3 { margin: 15px 0 10px; color: var(--color-primary); font-size: 1.4rem; font-weight: 700; }
 .card p { font-size: 0.95rem; color: #555; }
 
-/* Features */
+/* 8. CARACTERÍSTICAS (FEATURES) */
 .features { background: var(--color-primary); color: white; }
 .features .section-title { color: white; border-bottom: 2px solid var(--color-accent); display: inline-block; padding-bottom: 10px; }
 .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; margin-top: 50px; }
-.feature-item i { font-size: 3rem; color: var(--color-accent); margin-bottom: 20px; }
+.feature-item i { font-size: 3rem; color: var(--color-accent); margin-bottom: 20px; transition: transform 0.3s; }
+.feature-item:hover i { transform: scale(1.2); }
 .feature-item h4 { font-size: 1.1rem; letter-spacing: 1px; font-weight: 700; }
 
-/* Footer con Redes Sociales */
-.footer { background: #061f29; color: #bdc3c7; padding: 60px 0 20px; }
+/* 9. FOOTER CON REDES SOCIALES */
+.footer { background: #061f29; color: #bdc3c7; padding: 80px 0 30px; }
 .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 40px; gap: 40px; border-bottom: 1px solid #1c3b45; padding-bottom: 40px; }
 .footer h3 { color: var(--color-accent); margin-bottom: 20px; font-size: 1.4rem; text-transform: uppercase; }
 .slogan-footer { font-family: 'Dancing Script', cursive; font-size: 1.6rem; color: white; }
@@ -115,90 +164,72 @@ ul { list-style: none; }
 .social-icons { margin-top: 20px; }
 .social-icons a {
     display: inline-block;
-    width: 40px; height: 40px;
+    width: 45px; height: 45px;
     background: rgba(255,255,255,0.1);
     color: white;
     text-align: center;
-    line-height: 40px;
+    line-height: 45px;
     border-radius: 50%;
     margin-right: 10px;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.3s;
     font-size: 1.2rem;
 }
-.social-icons a:hover { background: var(--color-accent); color: var(--color-primary); }
+.social-icons a:hover { background: var(--color-accent); color: var(--color-primary); transform: translateY(-3px); }
 
 .copyright { text-align: center; font-size: 0.85rem; opacity: 0.6; }
 
-/* Botón Flotante Whatsapp */
+/* 10. BOTÓN FLOTANTE WHATSAPP */
 .btn-wsp {
     position: fixed; width: 60px; height: 60px; line-height: 60px;
-    bottom: 25px; right: 25px;
+    bottom: 30px; right: 30px;
     background: #25d366; color: #fff;
     border-radius: 50px; text-align: center; font-size: 35px;
-    box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
     z-index: 100; transition: all 300ms ease;
     display: flex; align-items: center; justify-content: center;
 }
 .btn-wsp:hover { background: #20ba5a; transform: scale(1.1); }
 
-/* --- LIGHTBOX (PANTALLA COMPLETA) --- */
+/* 11. LIGHTBOX (PANTALLA COMPLETA) */
 #lightbox {
     position: fixed; z-index: 2000; top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.95);
     display: none; /* Oculto por defecto */
     justify-content: center; align-items: center;
     cursor: zoom-out;
     padding: 20px;
+    backdrop-filter: blur(5px);
 }
 #lightbox img {
     max-width: 95%; max-height: 95%;
     border: 2px solid white;
     border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    animation: zoomIn 0.3s;
 }
 
-/* Responsive */
+/* DEFINICIÓN DE ANIMACIONES */
+@keyframes subirAparecer {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* RESPONSIVE (CELULAR) */
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.2rem; }
     .slogan { font-size: 1.8rem; }
+    .hero-content { padding: 30px 20px; } /* Ajuste del vidrio en móvil */
+    
     .nav-links { display: none; } 
     .top-bar { text-align: center; display: block; }
     .top-bar span { display: block; margin: 5px 0; }
     .logo-img { max-height: 50px; margin: auto; display: block; }
     .navbar .container { justify-content: center; }
     .btn-wsp { width: 55px; height: 55px; font-size: 30px; bottom: 20px; right: 20px; }
-}
-
-/* --- TOQUES MODERNOS (AGREGADO FINAL) --- */
-
-/* 1. Deslizamiento Suave en toda la página */
-html {
-    scroll-behavior: smooth;
-}
-
-/* 2. Animación de Entrada para la Portada */
-.hero-content {
-    animation: subirAparecer 1.5s ease-out;
-}
-
-/* Definición de la animación */
-@keyframes subirAparecer {
-    from {
-        opacity: 0;
-        transform: translateY(50px); /* Empieza más abajo */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0); /* Termina en su sitio */
-    }
-}
-
-/* 3. Mejora visual en el Título (Efecto Degradado Dorado) */
-.hero h1 {
-    background: linear-gradient(45deg, #C59D5F, #FFF, #C59D5F);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent; /* Hace que el texto tome el color del fondo */
-    text-shadow: none; /* Quitamos sombra para que se vea limpio */
 }
