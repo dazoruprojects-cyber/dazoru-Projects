@@ -169,3 +169,36 @@ ul { list-style: none; }
     .navbar .container { justify-content: center; }
     .btn-wsp { width: 55px; height: 55px; font-size: 30px; bottom: 20px; right: 20px; }
 }
+
+/* --- TOQUES MODERNOS (AGREGADO FINAL) --- */
+
+/* 1. Deslizamiento Suave en toda la página */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 2. Animación de Entrada para la Portada */
+.hero-content {
+    animation: subirAparecer 1.5s ease-out;
+}
+
+/* Definición de la animación */
+@keyframes subirAparecer {
+    from {
+        opacity: 0;
+        transform: translateY(50px); /* Empieza más abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Termina en su sitio */
+    }
+}
+
+/* 3. Mejora visual en el Título (Efecto Degradado Dorado) */
+.hero h1 {
+    background: linear-gradient(45deg, #C59D5F, #FFF, #C59D5F);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Hace que el texto tome el color del fondo */
+    text-shadow: none; /* Quitamos sombra para que se vea limpio */
+}
