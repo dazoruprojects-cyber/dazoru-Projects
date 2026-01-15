@@ -14,7 +14,7 @@
         <div class="container">
             <span><i class="fas fa-phone-alt"></i> 930 132 709</span>
             <span><i class="fas fa-envelope"></i> dazoruprojects@gmail.com</span>
-            <span class="highlight">¡ESPEJOS, MELAMINA Y WALL PANELS !</span>
+            <span class="highlight">¡ESPEJOS, WALL PANELS Y MELAMINA!</span>
         </div>
     </div>
 
@@ -23,7 +23,6 @@
             <div class="logo-container">
                 <img src="logo.png" alt="Dazoru Projects" class="logo-img">
             </div>
-            
             <ul class="nav-links">
                 <li><a href="#">INICIO</a></li>
                 <li><a href="#">NOSOTROS</a></li>
@@ -46,7 +45,7 @@
     <section class="services section">
         <div class="container">
             <h2 class="section-title">NUESTROS SERVICIOS</h2>
-            <p class="section-subtitle">Renueva tu hogar con estilo y elegancia</p>
+            <p class="section-subtitle">Haz clic en las imágenes para verlas en grande</p>
             
             <div class="grid-3">
                 <div class="card">
@@ -54,31 +53,26 @@
                     <h3>Espejos Decorativos</h3>
                     <p>Diseños exclusivos con marco de madera y espejo de 3 mm. Amplía e ilumina tus espacios.</p>
                 </div>
-                
                 <div class="card">
                     <img src="wallpanel.jpg" alt="Wall Panel TV" class="card-img">
                     <h3>Wall Panels</h3>
-                    <p>Revestimientos modernos para paredes que dan textura y calidez a cualquier ambiente.</p>
+                    <p>Revestimientos modernos para paredes que dan textura y calidez.</p>
                 </div>
-                
                 <div class="card">
                     <img src="melamina.jpg" alt="Divisor de ambiente melamina" class="card-img">
                     <h3>Proyectos en Melamina</h3>
-                    <p>Muebles de cocina, closets y centros de entretenimiento a medida y funcionales.</p>
+                    <p>Muebles de cocina, closets y centros de entretenimiento a medida.</p>
                 </div>
-                
                 <div class="card">
                     <img src="instalacion.png" alt="Herramientas e instalación" class="card-img">
                     <h3>Instalación A1</h3>
-                    <p>Técnicos especialistas y accesorios de calidad para una instalación segura y limpia.</p>
+                    <p>Técnicos especialistas y accesorios de calidad para una instalación segura.</p>
                 </div>
-                
                 <div class="card">
                     <img src="diseno.png" alt="Diseño de Interiores Sala" class="card-img">
                     <h3>Diseño de Interiores</h3>
                     <p>Asesoría personalizada para integrar espejos y paneles en tu decoración.</p>
                 </div>
-                
                 <div class="card">
                     <img src="bano.png" alt="Mueble de Baño Moderno" class="card-img">
                     <h3>Muebles de Baño</h3>
@@ -118,13 +112,17 @@
                 <div>
                     <h3>DAZORU PROJECTS</h3>
                     <p class="slogan-footer">El arte de transformar espacios</p>
-                    <br>
-                    <p><i class="fas fa-map-marker-alt"></i> Independencia, Lima - Perú</p>
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
                 </div>
                 <div>
                     <h3>Contacto</h3>
                     <p><i class="fas fa-phone"></i> 930 132 709</p>
                     <p><i class="fas fa-envelope"></i> dazoruprojects@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Independencia, Lima</p>
                 </div>
             </div>
             <div class="copyright">
@@ -132,6 +130,34 @@
             </div>
         </div>
     </footer>
+
+    <a href="https://wa.me/51930132709?text=Hola%20Dazoru,%20quisiera%20cotizar%20y%20ver%20su%20catálogo" class="btn-wsp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="Imagen Grande">
+    </div>
+
+    <script>
+        // Seleccionamos los elementos
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const images = document.querySelectorAll('.card-img');
+
+        // Añadimos el evento clic a cada imagen
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex'; // Mostrar fondo negro
+                lightboxImg.src = img.src; // Poner la foto que se clickeó
+            });
+        });
+
+        // Ocultar al hacer clic en el fondo negro
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+    </script>
 
 </body>
 </html>
