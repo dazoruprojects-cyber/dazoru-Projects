@@ -1,7 +1,7 @@
-/* --- CONFIGURACIÓN DE COLORES (Basado en tu Logo) --- */
+/* --- CONFIGURACIÓN DE COLORES --- */
 :root {
-    --color-primary: #0E3D4D; /* Azul Petróleo (Fondo del logo) */
-    --color-accent: #C59D5F;  /* Dorado (Letras del logo) */
+    --color-primary: #0E3D4D; /* Azul Petróleo */
+    --color-accent: #C59D5F;  /* Dorado */
     --color-text: #333;
     --color-bg-light: #f4f4f4;
 }
@@ -21,18 +21,18 @@ ul { list-style: none; }
 .top-bar span { margin-right: 20px; }
 .top-bar .highlight { font-weight: bold; color: var(--color-accent); }
 
-/* Navegación (Ahora color Azul Petróleo para que el logo se integre bien) */
+/* Navegación */
 .navbar { background: var(--color-primary); box-shadow: 0 4px 10px rgba(0,0,0,0.2); padding: 10px 0; position: sticky; top: 0; z-index: 1000; }
 .flex-nav { display: flex; justify-content: space-between; align-items: center; }
 
-/* Logo Imagen */
-.logo-img { max-height: 70px; /* Tamaño del logo */ }
+/* Logo */
+.logo-img { max-height: 70px; }
 
 .nav-links { display: flex; gap: 20px; align-items: center; }
 .nav-links a { font-weight: 700; font-size: 0.9rem; transition: color 0.3s; text-transform: uppercase; color: white; }
 .nav-links a:hover { color: var(--color-accent); }
 
-/* Botón Cotizar en el menú */
+/* Botón Cotizar Menú */
 .btn-nav { 
     background: transparent; 
     color: var(--color-accent) !important; 
@@ -43,9 +43,8 @@ ul { list-style: none; }
 }
 .btn-nav:hover { background: var(--color-accent); color: white !important; }
 
-/* Hero Section (Portada) */
+/* Hero Section */
 .hero {
-    /* Fondo con filtro oscuro para leer bien el texto */
     background: linear-gradient(rgba(14, 61, 77, 0.8), rgba(14, 61, 77, 0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80'); 
     background-size: cover;
     background-position: center;
@@ -84,39 +83,89 @@ ul { list-style: none; }
 .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s; border: 1px solid #eee; }
 .card:hover { transform: translateY(-10px); border-bottom: 5px solid var(--color-accent); }
 
-/* IMÁGENES DE SERVICIOS */
+/* IMÁGENES CLICABLES */
 .card-img { 
     width: 100%; 
-    height: 250px; /* Altura fija */
-    object-fit: cover; /* Recorta la foto para que no se estire */
+    height: 250px; 
+    object-fit: cover; 
     border-radius: 8px; 
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
+    cursor: pointer; /* Manito al pasar el mouse */
+    transition: filter 0.3s;
 }
+.card-img:hover { filter: brightness(0.8); } /* Efecto visual al pasar el mouse */
 
 .card h3 { margin: 15px 0 10px; color: var(--color-primary); font-size: 1.4rem; font-weight: 700; }
 .card p { font-size: 0.95rem; color: #555; }
 
-/* Features (Por qué elegirnos) */
+/* Features */
 .features { background: var(--color-primary); color: white; }
 .features .section-title { color: white; border-bottom: 2px solid var(--color-accent); display: inline-block; padding-bottom: 10px; }
 .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; margin-top: 50px; }
 .feature-item i { font-size: 3rem; color: var(--color-accent); margin-bottom: 20px; }
 .feature-item h4 { font-size: 1.1rem; letter-spacing: 1px; font-weight: 700; }
 
-/* Footer */
+/* Footer con Redes Sociales */
 .footer { background: #061f29; color: #bdc3c7; padding: 60px 0 20px; }
 .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 40px; gap: 40px; border-bottom: 1px solid #1c3b45; padding-bottom: 40px; }
 .footer h3 { color: var(--color-accent); margin-bottom: 20px; font-size: 1.4rem; text-transform: uppercase; }
 .slogan-footer { font-family: 'Dancing Script', cursive; font-size: 1.6rem; color: white; }
+
+/* Iconos Sociales Footer */
+.social-icons { margin-top: 20px; }
+.social-icons a {
+    display: inline-block;
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: background 0.3s;
+    font-size: 1.2rem;
+}
+.social-icons a:hover { background: var(--color-accent); color: var(--color-primary); }
+
 .copyright { text-align: center; font-size: 0.85rem; opacity: 0.6; }
 
-/* Responsive móvil */
+/* Botón Flotante Whatsapp */
+.btn-wsp {
+    position: fixed; width: 60px; height: 60px; line-height: 60px;
+    bottom: 25px; right: 25px;
+    background: #25d366; color: #fff;
+    border-radius: 50px; text-align: center; font-size: 35px;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+    z-index: 100; transition: all 300ms ease;
+    display: flex; align-items: center; justify-content: center;
+}
+.btn-wsp:hover { background: #20ba5a; transform: scale(1.1); }
+
+/* --- LIGHTBOX (PANTALLA COMPLETA) --- */
+#lightbox {
+    position: fixed; z-index: 2000; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none; /* Oculto por defecto */
+    justify-content: center; align-items: center;
+    cursor: zoom-out;
+    padding: 20px;
+}
+#lightbox img {
+    max-width: 95%; max-height: 95%;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.2rem; }
     .slogan { font-size: 1.8rem; }
-    .nav-links { display: none; } /* En esta versión básica ocultamos menú en móvil */
+    .nav-links { display: none; } 
     .top-bar { text-align: center; display: block; }
     .top-bar span { display: block; margin: 5px 0; }
     .logo-img { max-height: 50px; margin: auto; display: block; }
     .navbar .container { justify-content: center; }
+    .btn-wsp { width: 55px; height: 55px; font-size: 30px; bottom: 20px; right: 20px; }
 }
